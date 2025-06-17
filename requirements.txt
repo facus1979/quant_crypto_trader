@@ -1,0 +1,12 @@
+pandas
+numpy
+scikit-learn
+xgboost
+lightgbm
+backtrader
+matplotlib
+pyyaml
+requests
+ccxt
+ta
+loguru

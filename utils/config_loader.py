@@ -1,0 +1,1 @@
+# Función para cargar YAMLs y validarlos
