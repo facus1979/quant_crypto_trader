@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "features_relational"
+version = "0.1.0"
+description = "Generación de features relacionales y cruzados"
+authors = ["Facu"]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "3.10.*"
+pandas = "1.5.3"
+featuretools = "1.24.0"
+numpy = "^1.23.5"
+scikit-learn = "^1.2.2"
+pyyaml = "^6.0"
+loguru = "^0.7"
+setuptools = "^80.9.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

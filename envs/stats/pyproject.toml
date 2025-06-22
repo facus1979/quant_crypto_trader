@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "features_stats"
+version = "0.1.0"
+description = "Features estadísticos avanzados con tsfresh y tsflex"
+authors = ["Facu"]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.12"
+tsfresh = "^0.21.0"
+tsflex = "^0.4.0"
+numpy = "^1.23"
+pandas = "^1.5"
+scipy = "^1.14"
+loguru = "^0.7"
+pyyaml = "^6.0"
+setuptools = "^80.9.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

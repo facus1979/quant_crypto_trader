@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "features_ohlcv"
+version = "0.1.0"
+description = "Generación de features técnicos y microestructura"
+authors = ["Facu"]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "3.10.*"
+numpy = "1.23.5"
+pandas = "1.5.3"
+ta = "^0.11.0"
+vectorbt = "^0.25.0"
+numba = "0.56.4"
+scikit-learn = "1.2.2"
+loguru = "^0.7"
+pyyaml = "^6.0"
+plotly = "5.13.1"
+# Requiere que tengas mlfinlab clonado y adaptado a Python 3.10
+mlfinlab = { path = "../../../mlfinlab", develop = true, extras = [] }
+dash-bootstrap-components = "^2.0.3"
+dash = "^3.0.4"
+dash-core-components = "^2.0.0"
+dash-html-components = "^2.0.0"
+jupyter-dash = "^0.4.2"
+dash-cytoscape = "^1.0.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
