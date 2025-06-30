@@ -1,0 +1,53 @@
+🚀 Posibles mejoras para versión 2 del selector
+✅ 1️⃣ Guardar el resumen completo en metadata.json
+Incluir dentro del metadata.json no solo el modelo y score, sino también:
+
+El ranking completo de todas las combinaciones modelo + métrica.
+
+Las top features seleccionadas.
+
+El tiempo total de ejecución (si luego lo deseás).
+
+Permite trazar resultados y facilitar auditoría o visualización posterior.
+
+✅ 2️⃣ Generar un heatmap de correlación de las top features
+Visualiza la relación lineal entre las features seleccionadas.
+
+Ayuda a:
+
+Detectar redundancia entre variables (ejemplo: dos features muy correlacionadas que podrían simplificarse).
+
+Identificar grupos de features que aportan información similar.
+
+Auditar la diversidad informativa del subset.
+
+Útil como output visual para reportes.
+
+✅ 3️⃣ Exportar un cv_results.csv
+Archivo separado con el detalle de cada combinación modelo + métrica y su score:
+
+python-repl
+Copiar
+Editar
+model, metric, score
+xgboost, sharpe, 0.5913
+xgboost, roc_auc, 0.5198
+...
+Sirve para:
+
+Gráficos comparativos entre modelos y métricas.
+
+Auditar resultados en otras herramientas.
+
+Documentar la performance completa más allá del mejor combo.
+
+✅ 4️⃣ Incluir tiempo de ejecución en los outputs
+Guardar el tiempo total del proceso en metadata.json y loguearlo.
+
+Útil para evaluar performance y comparar eficiencia entre experimentos.
+
+✍ Notas
+✔ Todas estas mejoras no afectan la lógica actual del selector; son agregados para hacerlo más auditable, explicativo y visual.
+✔ Son prácticas recomendadas en la documentación y libros como Advances in Financial Machine Learning, Finding Alphas y Machine Trading.
+
+------------

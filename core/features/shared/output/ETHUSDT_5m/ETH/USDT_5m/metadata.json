@@ -1,0 +1,100 @@
+{
+  "best_model": "xgboost",
+  "best_metric": "sharpe",
+  "best_score": 0.5912546700612946,
+  "top_features": [
+    "low",
+    "close_mean_20",
+    "close_min_10",
+    "sma_10",
+    "obv",
+    "close_zscore_20",
+    "volume",
+    "close_std_20",
+    "close_kurt_20",
+    "volume_zscore_5",
+    "bb_low",
+    "rsi_14",
+    "close_over_high",
+    "close_skew_5",
+    "cci",
+    "close",
+    "close_skew_10",
+    "close_std_5",
+    "macd_signal",
+    "stoch_d",
+    "close_skew_20",
+    "close_std_10",
+    "bb_high",
+    "williams_r",
+    "volume_std_20",
+    "close_zscore_5",
+    "macd_line",
+    "volume_zscore_20",
+    "volume_zscore_10",
+    "volume_std_5"
+  ],
+  "ranking": [
+    {
+      "model": "xgboost",
+      "metric": "sharpe",
+      "score": 0.5912546700612946
+    },
+    {
+      "model": "xgboost",
+      "metric": "roc_auc",
+      "score": 0.5198140096618358
+    },
+    {
+      "model": "xgboost",
+      "metric": "f1",
+      "score": 0.518988603988604
+    },
+    {
+      "model": "xgboost",
+      "metric": "accuracy",
+      "score": 0.5185306122448979
+    },
+    {
+      "model": "random_forest",
+      "metric": "sharpe",
+      "score": 0.5125661209787314
+    },
+    {
+      "model": "random_forest",
+      "metric": "roc_auc",
+      "score": 0.5343333333333333
+    },
+    {
+      "model": "random_forest",
+      "metric": "f1",
+      "score": 0.44591607565011826
+    },
+    {
+      "model": "random_forest",
+      "metric": "accuracy",
+      "score": 0.5343673469387755
+    },
+    {
+      "model": "logistic_regression",
+      "metric": "sharpe",
+      "score": 0.5433823515459214
+    },
+    {
+      "model": "logistic_regression",
+      "metric": "roc_auc",
+      "score": 0.5251666666666666
+    },
+    {
+      "model": "logistic_regression",
+      "metric": "f1",
+      "score": 0.45475350046778623
+    },
+    {
+      "model": "logistic_regression",
+      "metric": "accuracy",
+      "score": 0.5226938775510204
+    }
+  ],
+  "elapsed_time_sec": 20.61542296409607
+}

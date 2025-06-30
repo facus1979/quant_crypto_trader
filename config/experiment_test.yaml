@@ -45,20 +45,30 @@ features:
     # - "quantile_bins": binning de columnas en cuartiles/deciles
     # - "yeo-johnson": transformaciones de normalización no lineal
 
-# 🧪 Selección automática de features + validación cruzada
-selection:
-  enabled: true
-  method: auto              # "auto" = prueba todas las combinaciones
-  models:                   # Modelos a usar para evaluar importancia y CV
-    - xgboost               # Árboles gradientes optimizados
-    - random_forest         # Bosques aleatorios
-    - logistic_regression   # Clasificador lineal
-  metrics:                  # Métricas para seleccionar el mejor subset
-    - sharpe                # Sharpe ratio (performance financiera)
-    - roc_auc               # Área bajo curva ROC (clasificación binaria)
-    - f1                    # F1 Score (balance entre precisión y recall)
-    - accuracy              # Precisión total
-  top_k: 30                 # Máximo número de features a conservar en el subset final
+# --- Configuración de selección automática de features -----------------------
+selection:                            # Sección dedicada a la configuración de la selección automática de features
+  enabled: true                      # Activa (true) o desactiva (false) todo el bloque de selección
+  x_full_path: core/features/shared/temp/X_full.csv  
+                                      # Ruta al CSV con todas las features unificadas (salida del merge)
+  output_dir: shared/output          # Carpeta donde se van a escribir X_selected.csv y metadata.json
+  method: auto                       # Método de selección: 
+                                      #   “auto” = prueba todas las combinaciones de modelo+métrica
+  models:                            # Modelos que se entrenarán para calcular importancia y validación cruzada
+    - xgboost                        #   • XGBoostClassifier
+    - random_forest                  #   • RandomForestClassifier
+    - logistic_regression            #   • LogisticRegression
+  metrics:                           # Métricas usadas para evaluar y comparar modelos
+    - sharpe                         #   • Sharpe ratio (rendimiento ajustado por riesgo)
+    - roc_auc                        #   • Área bajo la curva ROC (clasificación binaria)
+    - f1                             #   • F1 Score (balance entre precisión y recall)
+    - accuracy                       #   • Precisión global (accuracy)
+  top_k: 30                          # Máximo número de features que se mantendrán en el subset final
+  cv_splits: 5                       # Número de pliegues (folds) a usar en la validación cruzada
+  xgboost_params: {}                 # Parámetros extras para XGBoost (vacío = defaults)
+  random_forest_params: {}           # Parámetros extras para Random Forest (vacío = defaults)
+  logistic_regression_params:        # Parámetros extras para Logistic Regression
+    max_iter: 3000                   #   • max_iter: número máximo de iteraciones para asegurar convergencia
+
 
 # 📁 Carpeta destino donde se guardan:
 # - X_full.csv

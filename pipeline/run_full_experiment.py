@@ -68,7 +68,8 @@ def main(config_path: str):
     output_path = build_output_path(request.symbol, request.interval)
     config["output_path"] = str(output_path)
 
-    temp_config_path = Path("temp_config.yaml")
+    temp_config_path = Path("core/features/shared/temp/temp_config.yaml")
+
     with open(temp_config_path, "w") as f:
         import yaml
         yaml.dump(config, f)
@@ -76,7 +77,7 @@ def main(config_path: str):
     log.info(f"[bold magenta]🧠 Ejecutando pipeline de features...[/bold magenta]")
     run([sys.executable, "core/features/run_feature_pipeline.py", str(temp_config_path)], check=True)
 
-
+    temp_config_path.unlink()
     log.info(f"[bold green]🎯 Experimento completo.[/bold green]")
 
 
