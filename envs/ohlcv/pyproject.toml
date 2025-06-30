@@ -24,6 +24,7 @@ dash-core-components = "^2.0.0"
 dash-html-components = "^2.0.0"
 jupyter-dash = "^0.4.2"
 dash-cytoscape = "^1.0.2"
+rich = "^14.0.0"
 
 [build-system]
 requires = ["poetry-core"]

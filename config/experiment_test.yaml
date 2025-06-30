@@ -1,0 +1,69 @@
+# 📊 Datos de mercado a utilizar
+market_data:
+  symbol: "ETH/USDT"         # Activo a analizar
+  interval: "5m"             # Intervalo temporal de las velas
+  start_date: "2024-01-01"   # Fecha inicial del dataset
+  end_date: "2024-01-01"     # Fecha final del dataset
+  provider: "coinbase"       # Fuente de datos (binance, coinbase, alpha_vantage, etc.)
+  save_to_csv: true          # Si se guarda el archivo descargado
+
+# 🧠 Configuración del pipeline de features
+features:
+  ohlcv:
+    enabled: true
+    indicators: "all"        # Todos los indicadores disponibles (ver lista abajo)
+    # Indicadores incluidos en "all":
+    # - rsi: Índice de fuerza relativa
+    # - ema: Media exponencial móvil (10, 20)
+    # - macd: Media móvil convergente-divergente
+    # - bollinger: Bandas de Bollinger
+    # - williams_r: Oscilador de sobrecompra/sobreventa
+    # - stoch: Estocástico lento (%K, %D)
+    # - atr: Rango verdadero promedio
+    # - adx: Índice de movimiento direccional promedio
+    # - obv: Balance de volumen
+    # - cci: Commodity Channel Index
+    # - roc: Rate of Change
+
+  stats:
+    enabled: true
+    windows: [5, 10, 20]     # Tamaños de ventana para estadísticas rolling
+    # Se aplican a columnas como close, volume, returns:
+    # - mean, std, zscore, skewness, kurtosis, max, min, etc.
+
+  relational:
+    enabled: true
+    # Calcula relaciones entre activos o series: spreads, betas, cointegración, ratios
+
+  nonlinear:
+    enabled: true
+    method: "autofeat"
+    # Métodos posibles:
+    # - "autofeat": transforma features polinómicas + interacciones no lineales
+    # - "pca": reducción de dimensionalidad
+    # - "poly": expansión polinómica (con sklearn)
+    # - "quantile_bins": binning de columnas en cuartiles/deciles
+    # - "yeo-johnson": transformaciones de normalización no lineal
+
+# 🧪 Selección automática de features + validación cruzada
+selection:
+  enabled: true
+  method: auto              # "auto" = prueba todas las combinaciones
+  models:                   # Modelos a usar para evaluar importancia y CV
+    - xgboost               # Árboles gradientes optimizados
+    - random_forest         # Bosques aleatorios
+    - logistic_regression   # Clasificador lineal
+  metrics:                  # Métricas para seleccionar el mejor subset
+    - sharpe                # Sharpe ratio (performance financiera)
+    - roc_auc               # Área bajo curva ROC (clasificación binaria)
+    - f1                    # F1 Score (balance entre precisión y recall)
+    - accuracy              # Precisión total
+  top_k: 30                 # Máximo número de features a conservar en el subset final
+
+# 📁 Carpeta destino donde se guardan:
+# - X_full.csv
+# - X_selected.csv
+# - ranking.csv
+# - heatmap.png
+# - metadata.json
+output_path: core/features/shared/output/

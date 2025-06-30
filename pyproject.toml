@@ -1,25 +1,30 @@
-[tool.poetry]
-name = "quant_crypto_trader"
+[project]
+name = "quant-crypto-trader"
 version = "0.1.0"
 description = "Orquestador del pipeline de trading cuantitativo"
-authors = ["Facu"]
-package-mode = false
+authors = [{name = "Facu", email = "farnold@invertironline.com"}]
+readme = "README.md"
+requires-python = ">=3.10,<4.0"
+dependencies = [
+    "pandas==1.5.3",
+    "ccxt>=4.0",
+    "pyyaml>=6.0",
+    "loguru>=0.7",
+    "requests>=2.32",
+    "matplotlib>=3.8",
+    "numpy==1.23.5",
+    "rich>=14.0.0"
+]
 
-[tool.poetry.dependencies]
-python = "^3.10"
-pandas = "1.5.3"
-ccxt = "^4.0"
-pyyaml = "^6.0"
-loguru = "^0.7"
-requests = "^2.32"
-matplotlib = "^3.8"
-numpy = "1.23.5"
-rich = "^14.0.0"
-
-[tool.poetry.group.dev.dependencies]
-black = "^24.0"
-pytest = "^8.0"
+[project.optional-dependencies]
+dev = [
+    "black>=24.0",
+    "pytest>=8.0"
+]
 
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+package-mode = false

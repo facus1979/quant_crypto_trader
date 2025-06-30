@@ -1,0 +1,36 @@
+features:
+  nonlinear:
+    enabled: true
+    method: autofeat
+  ohlcv:
+    enabled: true
+    indicators: all
+  relational:
+    enabled: true
+  stats:
+    enabled: true
+    windows:
+    - 5
+    - 10
+    - 20
+market_data:
+  end_date: '2024-01-01'
+  interval: 5m
+  provider: coinbase
+  save_to_csv: true
+  start_date: '2024-01-01'
+  symbol: ETH/USDT
+output_path: core\features\shared\output\ETHUSDT_5m
+selection:
+  enabled: true
+  method: auto
+  metrics:
+  - sharpe
+  - roc_auc
+  - f1
+  - accuracy
+  models:
+  - xgboost
+  - random_forest
+  - logistic_regression
+  top_k: 30
